@@ -69,12 +69,14 @@ if (re.search(r'\.txt', args.PathList) == None):
     args.PathList = args.PathList + ".txt"
 
 #Проверяем корректность введенного символа
-if(ErrorSymbol(args.Symbol) == 0):
-    parser.error("Символ не удовлетворяет условиям")
+if(args.Symbol != None):
+    if(ErrorSymbol(args.Symbol) == 0):
+        parser.error("Символ не удовлетворяет условиям")
 
 #Предупреждаем о избыточном синтаксисе
-if(ErrorSymbol(args.Symbol) == 1 and args.Dict == True):
-    parser.warning("Установлен флаг словаря и введен символ")
+if(args.Symbol != None):
+    if(ErrorSymbol(args.Symbol) == 1 and args.Dict == True):
+        parser.warning("Установлен флаг словаря и введен символ")
 
 #Обрабатываем ошибку пути
 if(ErrorPath(args.PathText) == 0):
